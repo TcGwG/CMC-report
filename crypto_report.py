@@ -1,10 +1,14 @@
 import requests
 import json
 import os
-import time
+import requests
+import json
 import csv
-import random
 from datetime import datetime
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 from dotenv import load_dotenv
 
 class CryptoReport:
@@ -228,8 +232,14 @@ class CryptoReport:
 
 if __name__ == "__main__":
     try:
+        print("Loading environment variables...")
         load_dotenv()
+        print(f"Current working directory: {os.getcwd()}")
+        print(f".env file exists: {os.path.exists('.env')}")
+        
         api_key = os.getenv('CMC_API_KEY')
+        print(f"API key loaded: {'*' * len(api_key) if api_key else 'None'}")
+        
         if not api_key:
             raise ValueError("Please set CMC_API_KEY in .env file")
         
